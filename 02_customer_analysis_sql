@@ -1,15 +1,16 @@
--- Build customer-level dataset
+-- Build customer-level metrics
 WITH customer_base AS (
     SELECT
         customer_id,
+        country,
 
-        SUM(quantity * unit_price) AS monetary,
-        COUNT(DISTINCT invoice_no) AS frequency,
+        SUM(revenue) AS monetary,
+        COUNT(DISTINCT invoice_id) AS frequency,
         MAX(invoice_date) AS last_purchase_date
 
     FROM retail_clean
     WHERE customer_id IS NOT NULL
-    GROUP BY customer_id
+    GROUP BY customer_id, country
 )
 
 SELECT *
