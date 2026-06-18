@@ -4,7 +4,7 @@ Dataset Source:
 UCI Online Retail Dataset
 https://archive.ics.uci.edu/ml/datasets/online+retail
 
-# E-Commerce Customer Behavior Analysis (SQL + RFM Segmentation)
+# E-Commerce Customer Analytics: Revenue Drivers, RFM Segmentation & Retention Opportunities
 
 Executive Summary
 
