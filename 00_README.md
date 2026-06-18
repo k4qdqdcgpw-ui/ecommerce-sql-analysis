@@ -6,6 +6,25 @@ https://archive.ics.uci.edu/ml/datasets/online+retail
 
 # E-Commerce Customer Behavior Analysis (SQL + RFM Segmentation)
 
+Executive Summary
+
+This project analyzed an e-commerce transaction dataset to identify revenue drivers, customer value patterns, and retention opportunities using SQL and RFM segmentation.
+
+Key Findings
+
+* The United Kingdom generated approximately $6.8M in revenue, representing the largest market by a significant margin.
+* At Risk customers contributed over $7M in historical revenue, making them the highest-priority segment for retention campaigns.
+* Champions exhibited the highest average customer value but represented a very small portion of the customer base.
+* Revenue was highly concentrated geographically, exposing the business to market concentration risk.
+* International markets such as the Netherlands and EIRE demonstrated high customer value despite smaller customer populations.
+
+Business Recommendations
+
+1. Launch targeted retention campaigns for At Risk customers.
+2. Develop loyalty initiatives to move Potential Loyalists into Loyal Customer segments.
+3. Reduce dependence on the UK market by expanding high-value international segments.
+4. Review discounting and customer engagement strategies to improve long-term customer retention.
+
 ## Overview
 
 This project analyzes large-scale e-commerce transactional data to understand customer purchasing behavior and identify high-value customer segments.
