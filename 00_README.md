@@ -4,204 +4,164 @@ Dataset Source:
 UCI Online Retail Dataset
 https://archive.ics.uci.edu/ml/datasets/online+retail
 
-Project Overview
+# E-Commerce Customer Behavior Analysis (SQL + RFM Segmentation)
 
-This project analyzes over 500,000 e-commerce transactions to identify how revenue is distributed across customers, products, and geography.
+## Overview
 
-The primary objective is to uncover whether business performance is evenly distributed or driven by a small number of key factors.
+This project analyzes large-scale e-commerce transactional data to understand customer purchasing behavior and identify high-value customer segments.
 
-Using SQL-based aggregation and segmentation techniques, the analysis reveals strong patterns of revenue concentration and customer value inequality.
+The goal is to move beyond raw transaction data and apply **RFM (Recency, Frequency, Monetary) analysis** to classify customers based on engagement and value.
 
-⸻
+This segmentation helps businesses improve retention, targeting, and revenue strategy.
 
-Key Objectives
+---
 
-* Identify major revenue-driving countries, customers, and products
-* Analyze whether customer purchasing behavior is balanced or concentrated
-* Measure the extent of revenue inequality across the business
-* Translate raw transactional data into actionable business insights
+## Business Questions
 
-⸻
+This analysis answers:
 
-Dataset
+- Which customers generate the highest revenue?
+- How often do customers return to purchase?
+- How recently have customers made purchases?
+- Can customers be grouped into meaningful behavioral segments?
+- Which customers are at risk vs highly engaged?
 
-E-commerce transactional dataset (~500,000+ rows)
+---
 
-Key Fields:
+## Dataset
 
-* InvoiceNo
-* StockCode
-* Description (Product Name)
-* Quantity
-* InvoiceDate
-* UnitPrice
-* CustomerID
-* Country
+E-commerce transactional dataset containing customer purchase history.
 
-⸻
+### Key Fields:
+- `customer_id`
+- `country`
+- `invoice_date` / `last_purchase_date`
+- `frequency` (number of purchases)
+- `monetary` (total spend)
+- RFM scores (`r_score`, `f_score`, `m_score`)
 
-Tools & Techniques
+---
 
-* SQL (data cleaning and transformation)
-* Aggregation functions (SUM, COUNT, GROUP BY)
-* Conditional logic (CASE WHEN)
-* Exploratory Data Analysis (EDA)
+## Tools Used
 
-⸻
+- SQL (data cleaning & aggregation)
+- GROUP BY and window functions
+- CASE WHEN logic
+- RFM scoring methodology
+- Exploratory data analysis (EDA)
 
-Key Business Insights
+---
 
-1. Revenue is Highly Concentrated Across All Dimensions
+## Methodology
 
-Analysis shows a consistent pattern of concentration across geography, customers, and products.
+### 1. Customer-Level Aggregation
 
-* The United Kingdom dominates total revenue
-* A small group of customers contributes a disproportionate share of sales
-* A limited number of products generate most of the revenue
+Customers were aggregated from transaction-level data into:
 
-Conclusion: The dataset follows a strong Pareto distribution, where a small number of drivers account for most business value.
+- Total monetary value (spend per customer)
+- Frequency (number of purchases)
+- Recency (based on last purchase date)
 
-⸻
+---
 
-2. Customer Value is Highly Uneven
+### 2. RFM Scoring
 
-Customer-level analysis reveals significant variation in purchasing behavior.
+Each customer is assigned a score from **1 to 5** for:
 
-* Most customers generate low to moderate revenue
-* A small subset of customers accounts for a large portion of total sales
+- **Recency (R):** How recently they purchased  
+- **Frequency (F):** How often they purchase  
+- **Monetary (M):** How much they spend  
 
-Insight: Customer segmentation is essential for identifying high-value customers and optimizing retention strategies.
+Higher scores represent stronger customer value.
 
-⸻
+---
 
-3. Product Revenue is Strongly Skewed
+## Customer Segmentation Logic
 
-Product performance analysis shows heavy reliance on a small number of items.
+Customers were grouped based on combined RFM scores:
 
-* Few products generate the majority of revenue
-* Many products contribute minimally to overall sales
-* Some non-product items (e.g., postage) appear among top revenue drivers
+---
 
-Insight: Revenue is driven by a concentrated product mix rather than a balanced catalog.
+### 🟢 Champions (5-5-5)
+- Recent buyers
+- High purchase frequency
+- High monetary value
 
-⸻
+**Business Meaning:**  
+Core high-value customers driving revenue. Most important segment to retain.
 
-Overall Conclusion
+---
 
-This analysis demonstrates that business performance is not evenly distributed across the customer base or product catalog.
+### 🟡 Loyal Customers (varied 5-4-x / 5-3-x)
+- Regular purchasers
+- Consistent engagement
+- Moderate to high spending
 
-Instead, revenue is heavily dependent on a small number of key drivers:
+**Business Meaning:**  
+Stable customer base with strong retention value.
 
-* Geographic concentration in the United Kingdom
-* High-value customer clusters
-* Top-performing product subset
+---
 
-Overall, the dataset clearly follows a Pareto (80/20) distribution pattern.
+### 🟡 Potential Loyalists (5-3-x / similar patterns)
+- Recent customers
+- Lower frequency but promising engagement
+- Growing value potential
 
-⸻
+**Business Meaning:**  
+Customers who can become loyal with targeted engagement.
 
-Skills Demonstrated
+---
 
-* SQL data transformation and aggregation
-* Customer and product-level segmentation
-* Exploratory data analysis (EDA)
-* Business insight generation from raw transactional data
-* Data storytelling and interpretation
+### ⚪ Other / Low Engagement Customers
+- Low frequency or one-time buyers
+- Lower overall engagement
 
-⸻
+**Business Meaning:**  
+Low priority segment or reactivation candidates.
 
-Key Learnings
+---
 
-* How to identify revenue concentration patterns in large datasets
-* How customer behavior impacts overall business performance
-* How product mix influences revenue distribution
-* How to translate SQL outputs into clear business insights
+## Key Insights
 
-⸻
+- Revenue is concentrated in a small group of high-value customers.
+- Most customers fall into low or moderate engagement categories.
+- Champions represent a small but highly valuable segment.
+- There is strong opportunity for retention and reactivation strategies.
 
-Future Improvements
+---
 
-* Add time-series analysis (monthly and seasonal trends)
-* Implement customer lifetime value (LTV) segmentation
-* Build an interactive dashboard (Power BI / Tableau)
-* Extend analysis with profit margin by product category
+## Business Impact
 
-⸻
+This segmentation can support:
 
-Final Note
+- Targeted marketing campaigns (VIP vs re-engagement groups)
+- Customer retention strategies
+- Loyalty program design
+- Revenue optimization
+- Customer lifetime value analysis
 
-This project demonstrates how SQL can be used not only for data reporting, but for uncovering structural patterns in business performance and customer behavior.
+---
 
-⸻
-⸻
+## Skills Demonstrated
 
-2. Customer Value is Highly Uneven
+- SQL data aggregation and transformation
+- RFM segmentation modeling
+- Customer behavior analysis
+- Business insight generation
+- Data storytelling and interpretation
 
-Customer-level analysis reveals significant variation in purchasing behavior.
+---
 
-* Most customers generate low to moderate revenue
-* A small subset of customers accounts for a large portion of total sales
+## Future Improvements
 
-Insight: Customer segmentation is essential for identifying high-value customers and optimizing retention strategies.
+- Customer Lifetime Value (CLV) modeling
+- Cohort analysis (retention over time)
+- Churn prediction modeling
+- Dashboard visualization (Power BI / Tableau)
+- Product-level profitability analysis
 
-⸻
+---
 
-3. Product Revenue is Strongly Skewed
+## Summary
 
-Product performance analysis shows heavy reliance on a small number of items.
-
-* Few products generate the majority of revenue
-* Many products contribute minimally to overall sales
-* Some non-product items (e.g., postage) appear among top revenue drivers
-
-Insight: Revenue is driven by a concentrated product mix rather than a balanced catalog.
-
-⸻
-
-Overall Conclusion
-
-This analysis demonstrates that business performance is not evenly distributed across the customer base or product catalog.
-
-Instead, revenue is heavily dependent on a small number of key drivers:
-
-* Geographic concentration in the United Kingdom
-* High-value customer clusters
-* Top-performing product subset
-
-Overall, the dataset clearly follows a Pareto (80/20) distribution pattern.
-
-⸻
-
-Skills Demonstrated
-
-* SQL data transformation and aggregation
-* Customer and product-level segmentation
-* Exploratory data analysis (EDA)
-* Business insight generation from raw transactional data
-* Data storytelling and interpretation
-
-⸻
-
-Key Learnings
-
-* How to identify revenue concentration patterns in large datasets
-* How customer behavior impacts overall business performance
-* How product mix influences revenue distribution
-* How to translate SQL outputs into clear business insights
-
-⸻
-
-Future Improvements
-
-* Add time-series analysis (monthly and seasonal trends)
-* Implement customer lifetime value (LTV) segmentation
-* Build an interactive dashboard (Power BI / Tableau)
-* Extend analysis with profit margin by product category
-
-⸻
-
-Final Note
-
-This project demonstrates how SQL can be used not only for data reporting, but for uncovering structural patterns in business performance and customer behavior.
-
-⸻
+This project demonstrates how transactional data can be transformed into actionable business intelligence using RFM segmentation to identify and prioritize customer value.
