@@ -1,4 +1,5 @@
 Revenue Concentration & Customer Segmentation in E-Commerce (SQL Analytics Project)
+
 Dataset Source:
 UCI Online Retail Dataset
 https://archive.ics.uci.edu/ml/datasets/online+retail
